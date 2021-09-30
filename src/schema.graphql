@@ -1,0 +1,12 @@
+type Event {
+id: String!
+title: String! 
+normalizedTitle: String! 
+startDate: Int! 
+endDate: Int! 
+updatedAt: Int! 
+}
+
+type Query {
+  getEvents: [Event!]!
+}

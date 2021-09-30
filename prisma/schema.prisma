@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model event {
+  id              String    @id
+  title           String?
+  normalizedTitle String?
+  startDate       DateTime?
+  endDate         DateTime?
+  updatedAt       DateTime
+}
+
+model photo {
+  id        String   @id
+  source    String
+  eventId   String?
+  updatedAt DateTime
+
+  @@index([eventId], map: "eventId")
+}

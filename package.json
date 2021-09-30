@@ -1,0 +1,29 @@
+ {
+  "name": "stagewood-project",
+  "version": "1.0.0",
+  "description": "Stagewood Project",
+  "main": "server.js",
+  "scripts": {
+    "devStart": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LEPII/stagewood-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LEPII/stagewood-project/issues"
+  },
+  "homepage": "https://github.com/LEPII/stagewood-project#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13",
+    "prisma": "^3.1.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.1.1",
+    "apollo-server": "^3.3.0",
+    "graphql": "^15.6.0"
+  }
+}
