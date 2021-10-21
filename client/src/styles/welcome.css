@@ -1,0 +1,269 @@
+.wp__container {
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.wp__header {
+  font-size: 72px;
+  cursor: default;
+}
+
+.cards__item__container {
+  display: inline-flex;
+  margin-top: 100px;
+}
+
+.cards__item__card {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  height: 230px;
+  padding-bottom: 5px;
+  background: rgb(220, 20, 60);
+  background: linear-gradient(
+    45deg,
+    rgba(220, 20, 60, 1) 0%,
+    rgba(224, 46, 81, 1) 16%,
+    rgba(229, 78, 108, 1) 47%,
+    rgba(237, 135, 155, 1) 80%,
+    rgba(248, 207, 215, 1) 100%
+  );
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  border-radius: 35% 15%;
+  margin-left: 35px;
+}
+.cards__item__img {
+  position: relative;
+  bottom: 5px;
+  width: 280px;
+  height: 180px;
+  margin-bottom: 21px;
+  border-radius: 35% 15%;
+}
+
+.cards__item__info {
+  position: relative;
+  bottom: 8px;
+  right: 22px;
+  inline-size: 210px;
+  text-align: center;
+  width: 80%;
+  overflow: scroll;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+}
+
+.cards__item__text {
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 9s linear infinite;
+}
+
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.cards__item__card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgb(255, 255, 255);
+  transition: 0.5s;
+}
+
+.searchContainer {
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  left: 70px;
+  right: 0;
+  bottom: 800px;
+  width: 300px;
+  height: 45px;
+  background-color: transparent;
+}
+.searchContainer .search {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  background: rgb(220, 20, 60);
+  background: linear-gradient(
+    45deg,
+    rgba(220, 20, 60, 1) 0%,
+    rgba(224, 46, 81, 1) 16%,
+    rgba(229, 78, 108, 1) 47%,
+    rgba(237, 135, 155, 1) 80%,
+    rgba(248, 207, 215, 1) 100%
+  );
+  border-radius: 50%;
+  transition: all 1s;
+  z-index: 4;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+}
+
+.searchContainer .search:hover {
+  cursor: pointer;
+}
+.searchContainer .search::before {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: 22px;
+  right: 0;
+  bottom: 0;
+  left: 22px;
+  width: 12px;
+  height: 2px;
+  background: white;
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+.searchContainer .search::after {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: -5px;
+  right: 0;
+  bottom: 0;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+
+.searchInput {
+  font-family: "Inconsolata", monospace;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 20px;
+  bottom: 0;
+  left: 2px;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+
+  background: rgb(220, 20, 60);
+  background: linear-gradient(
+    45deg,
+    rgba(220, 20, 60, 1) 0%,
+    rgba(224, 46, 81, 1) 16%,
+    rgba(229, 78, 108, 1) 47%,
+    rgba(237, 135, 155, 1) 80%,
+    rgba(248, 207, 215, 1) 100%
+  );
+  color: white;
+  text-shadow: 0 0 10px crimson;
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.8);
+  transition: all 1s;
+  opacity: 0;
+  z-index: 5;
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+}
+.searchInput:hover {
+  cursor: pointer;
+}
+.searchInput:focus {
+  width: 300px;
+  opacity: 1;
+  cursor: text;
+}
+.searchInput:focus ~ .search {
+  right: -450px;
+  background: black;
+  z-index: 6;
+}
+.searchInput:focus ~ .search::before {
+  top: 0;
+  left: 0;
+  width: 25px;
+}
+.searchInput:focus ~ .search::after {
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background: white;
+  border-radius: 0%;
+  transform: rotate(-45deg);
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 0.5;
+}
+
+.button {
+  position: relative;
+  top: 95px;
+  left: 30px;
+  background: rgb(220, 20, 60);
+  background: linear-gradient(
+    45deg,
+    rgba(220, 20, 60, 1) 0%,
+    rgba(224, 46, 81, 1) 16%,
+    rgba(229, 78, 108, 1) 47%,
+    rgba(237, 135, 155, 1) 80%,
+    rgba(248, 207, 215, 1) 100%
+  );
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 20px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}

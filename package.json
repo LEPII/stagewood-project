@@ -1,10 +1,15 @@
- {
+{
   "name": "stagewood-project",
   "version": "1.0.0",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "description": "Stagewood Project",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js",
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +29,8 @@
   "dependencies": {
     "@prisma/client": "^3.1.1",
     "apollo-server": "^3.3.0",
+    "apollo-server-core": "^3.3.0",
+    "concurrently": "^6.3.0",
     "graphql": "^15.6.0"
   }
 }

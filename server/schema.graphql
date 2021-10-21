@@ -1,0 +1,15 @@
+scalar GraphQLDateTime
+
+type Event {
+  id: String!
+  title: String!
+  startDate: String!
+  eventId: String!
+  source: String!
+}
+
+type Query {
+  getEvents: [Event!]!
+}
+
+

@@ -24,3 +24,12 @@ model photo {
 
   @@index([eventId], map: "eventId")
 }
+
+model new_table {
+  newid     Int     @id @default(autoincrement())
+  id        String? @db.VarChar(255)
+  title     String? @db.VarChar(255)
+  startDate String? @db.VarChar(255)
+  eventId   String? @db.VarChar(255)
+  source    String? @db.VarChar(255)
+}
