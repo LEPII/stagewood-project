@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import ErrorImage from "../styles/assets/errorImg.png";
 import "../styles/eventspage.css";
-import { useLocation } from "react-router-dom";
 
 const EventResults = ({history}) => {
 
   const location = useLocation();
-
   const handleReturn = (e) => {
     history.push("/")
   }
@@ -28,8 +27,7 @@ const EventResults = ({history}) => {
             <h3>Now showing: {location.state.event.title}</h3>
             <p className="events__subcontent">Explore Now</p>
             <button className="events__button" onClick={handleReturn}>
-              {" "}
-              Go Back{" "}
+              Go Back
             </button>
           </div>
         </div>

@@ -1,4 +1,3 @@
-scalar GraphQLDateTime
 
 type Event {
   id: String!
@@ -10,25 +9,5 @@ type Event {
 
 type Query {
   getEvents: [Event!]!
-  getEventsFiltered(
-    filter: String
-    skip: Int
-    take: Int
-    input: EventInput
-    orderBy: EventOrderByInput
-  ): [Event!]!
-}
+  }
 
-input EventOrderByInput {
-  title: Sort
-  startDate: Sort
-}
-
-enum Sort {
-  asc
-  desc
-}
-
-input EventInput {
-  title: String
-}

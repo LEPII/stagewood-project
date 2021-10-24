@@ -8,7 +8,7 @@ Stagewood Search Bar that allows users to search for their favorite events.
 - CSS
 - GraphQL
 - React.js
-- 
+
 :package: The back-end side of the application have all the logic to process request to the database. It was done using the following technologies: 
 - GraphQL
 - Apollo Server
@@ -31,8 +31,9 @@ BackEnd
 - [ ] `cd` into stagewood-project 
 - [ ] `@prisma/client` run command `$ npm install @prisma/client`
 - [ ] `apollo-server` run command `$ npm install apollo-server`
-- [ ] `graphql` run command `$ npm install graphql
+- [ ] `graphql` run command `$ npm install graphql`
 - [ ] `dotenv` run command `$ npm install dotenv`
+
 FrontEnd
 - [ ] `cd` into client 
 - [ ] `react-app` run command `$ npm install create-react-app <app-name>`
@@ -44,6 +45,7 @@ FrontEnd
 - [ ] `graphql-tag` run command `$ npm install graphql-tag`
 - [ ] `react-apollo` run command `$ npm install react-apollo`
 - [ ] `semantic-ui-react` run command `$ npm install semantic-ui-react`
+- [ ] `Aos` run command `$ npm install Aos`
 
 ### Step 4: API Keys (.env) :key:
 
@@ -61,4 +63,4 @@ FrontEnd
 
 
 ## :parachute: Runs on Heroku
-:desktop_computer: link
+:desktop_computer: https://stagewood-events.herokuapp.com/

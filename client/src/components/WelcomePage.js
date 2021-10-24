@@ -41,14 +41,11 @@ const WelcomePage = ({ history }) => {
     if (newArray.length < 1) {
       setUserInputValue([]);
     } else {
-      setUserInputValue(newArray);
+      setCurrentEvent(newArray);
     }
   };
 
-  const handleSubmit = async (e, id) => {
-    e.preventDefault();
-    history.push(`/search${id}`);
-  };
+
 
   function handleSorting (sort) {
     switch (sort) {
@@ -109,16 +106,12 @@ const WelcomePage = ({ history }) => {
     }
   }
 
-  const filteredEvent = currentEvent?.filter((event) => {
-     return event.title.toLowerCase().includes(userInputValue);
-   });
+  // setting the userInput State into the currentEvent State. 
+  // const filteredEvent = currentEvent?.filter((event) => {
+  //    return event.title.toLowerCase().includes(userInputValue);
+  //  });
   
 
-
-
-  console.log(userInputValue)
-  console.log(currentEvent);
-console.log(filteredEvent);
   return (
     <>
       <div className="wp__container">
@@ -168,12 +161,11 @@ console.log(filteredEvent);
         {error && <div>There was an error fetching the data.</div>}
       </div>
 
-      {filteredEvent.map((event, index) => (
+      {currentEvent.map((event, index) => (
         <EventsPage
           key={index}
           id={event.id}
           event={event}
-          handleSubmit={handleSubmit}
         />
       ))}
     </>
