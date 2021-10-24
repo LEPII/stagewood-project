@@ -29,7 +29,7 @@ const WelcomePage = ({ history }) => {
   const handleChange = (e) => {
     e.preventDefault();
     const eventInput = e.target.value.toLowerCase().trim();
-    setCurrentEvent(eventInput);
+    setUserInputValue(eventInput);
     if (eventInput.length < 1) {
       setUserInputValue([]);
       return;
@@ -41,7 +41,7 @@ const WelcomePage = ({ history }) => {
     if (newArray.length < 1) {
       setUserInputValue([]);
     } else {
-      setCurrentEvent(newArray);
+      setUserInputValue(newArray);
     }
   };
 
@@ -109,22 +109,16 @@ const WelcomePage = ({ history }) => {
     }
   }
 
-  const filteredEvents =
-    currentEvent &&
-    currentEvent.filter((data) => data.title.includes(userInputValue));
- 
-  console.log(filter);
-  console.log(userInputValue);
+  const filteredEvent = currentEvent?.filter((event) => {
+     return event.title.toLowerCase().includes(userInputValue);
+   });
+  
+
+
+
+  console.log(userInputValue)
   console.log(currentEvent);
-
-  const newArray = currentEvent.filter(()  => {
-    if (userInputValue.length > 1) {
-      setCurrentEvent(userInputValue)
-    } else 
-    return currentEvent
-  });
-    console.log(newArray);
-
+console.log(filteredEvent);
   return (
     <>
       <div className="wp__container">
@@ -174,7 +168,7 @@ const WelcomePage = ({ history }) => {
         {error && <div>There was an error fetching the data.</div>}
       </div>
 
-      {currentEvent.map((event, index) => (
+      {filteredEvent.map((event, index) => (
         <EventsPage
           key={index}
           id={event.id}
