@@ -11,7 +11,7 @@ import {
 } from "@apollo/client";
 
 const httpLink = createHttpLink({
-  uri: "https://stagewood-events.herokuapp.com/",
+  uri: "http://localhost:4000",
 });
 
 const client = new ApolloClient({
