@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import EventsPage from "./EventsPage";
 import { useQuery, gql } from "@apollo/react-hooks";
 import "../styles/welcome.css";
-import { useHistory } from "react-router-dom";
 
 const GETEVENT = gql`
   query Query {
@@ -16,9 +15,11 @@ const GETEVENT = gql`
 `;
 
 const WelcomePage = ({ history }) => {
+  
   const [currentEvent, setCurrentEvent] = useState([]);
-  const [userInputValue, setUserInputValue] = useState("");
+  const [userInputValue, setUserInputValue] = useState(" ");
   const [filter, setFilter] = useState([]);
+
   const { loading, error } = useQuery(GETEVENT, {
     onCompleted({ getEvents }) {
       setCurrentEvent(getEvents);
@@ -28,7 +29,7 @@ const WelcomePage = ({ history }) => {
   const handleChange = (e) => {
     e.preventDefault();
     const eventInput = e.target.value.toLowerCase().trim();
-    setUserInputValue(eventInput);
+    setCurrentEvent(eventInput);
     if (eventInput.length < 1) {
       setUserInputValue([]);
       return;
@@ -40,16 +41,16 @@ const WelcomePage = ({ history }) => {
     if (newArray.length < 1) {
       setUserInputValue([]);
     } else {
-      setUserInputValue(newArray);
+      setCurrentEvent(newArray);
     }
   };
-console.log(userInputValue)
-  const handleSubmit = async (e) => {
+
+  const handleSubmit = async (e, id) => {
     e.preventDefault();
-    // history.push(`/search${currentEvent}`);
+    history.push(`/search${id}`);
   };
 
-  function handleSorting(sort) {
+  function handleSorting (sort) {
     switch (sort) {
       case "1":
         const array = [...currentEvent].sort((a, b) => {
@@ -63,7 +64,7 @@ console.log(userInputValue)
           }
           return 0;
         });
-        return setFilter(array);
+        return setCurrentEvent(array);
       case "2":
         const newArray = [...currentEvent].sort((a, b) => {
           const nameA = a.title.toLowerCase();
@@ -76,7 +77,7 @@ console.log(userInputValue)
           }
           return 0;
         });
-        return setFilter(newArray);
+        return setCurrentEvent(newArray);
       case "3":
         const newDateArray = [...currentEvent].sort((a, b) => {
           const nameA = a.startDate;
@@ -89,7 +90,7 @@ console.log(userInputValue)
           }
           return 0;
         });
-        return setFilter(newDateArray);
+        return setCurrentEvent(newDateArray);
       case "4":
         const newDateArrayTwo = [...currentEvent].sort((a, b) => {
           const nameA = a.startDate;
@@ -102,21 +103,33 @@ console.log(userInputValue)
           }
           return 0;
         });
-        return setFilter(newDateArrayTwo);
+        return setCurrentEvent(newDateArrayTwo);
       default:
         break;
     }
-  };
+  }
 
-      const filterEvents =
-        filter &&
-        currentEvent.filter((event) => event.title.includes(userInputValue));
-      console.log(filterEvents);
+  const filteredEvents =
+    currentEvent &&
+    currentEvent.filter((data) => data.title.includes(userInputValue));
+ 
+  console.log(filter);
+  console.log(userInputValue);
+  console.log(currentEvent);
+
+  const newArray = currentEvent.filter(()  => {
+    if (userInputValue.length > 1) {
+      setCurrentEvent(userInputValue)
+    } else 
+    return currentEvent
+  });
+    console.log(newArray);
+
   return (
     <>
       <div className="wp__container">
         <h1 className="wp__header"> Search For Your Favorite Events! </h1>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="searchContainer">
             <input
               className="searchInput"
@@ -127,35 +140,48 @@ console.log(userInputValue)
             <div className="search"></div>
           </div>
           <div className="button__container">
-            <button className="button" onClick={() => handleSorting("1")}>
+            <button
+              className="button"
+              type="button"
+              onClick={() => handleSorting("1")}
+            >
               A-Z
             </button>
-            <button className="button" onClick={() => handleSorting("2")}>
+            <button
+              className="button"
+              type="button"
+              onClick={() => handleSorting("2")}
+            >
               Z-A
             </button>
-            <button className="button" onClick={() => handleSorting("3")}>
+            <button
+              className="button"
+              type="button"
+              onClick={() => handleSorting("3")}
+            >
               Newest
             </button>
-            <button className="button" onClick={() => handleSorting("4")}>
+            <button
+              className="button"
+              type="button"
+              onClick={() => handleSorting("4")}
+            >
               Oldest
             </button>
           </div>
         </form>
-        {loading && <div>Fetching...</div>}
+        {loading && <div className="wp__loader">Fetching...</div>}
         {error && <div>There was an error fetching the data.</div>}
       </div>
-      {currentEvent && (
-        <>
-          {currentEvent &&
-            currentEvent.map((event, index) => (
-              <EventsPage
-                key={index}
-                event={event}
-                handleSubmit={handleSubmit}
-              />
-            ))}
-        </>
-      )}
+
+      {currentEvent.map((event, index) => (
+        <EventsPage
+          key={index}
+          id={event.id}
+          event={event}
+          handleSubmit={handleSubmit}
+        />
+      ))}
     </>
   );
 };

@@ -1,23 +1,40 @@
 import React, { useEffect, useState } from "react";
-import Image from "../styles/assets/ticket.jpeg";
-import "../styles/eventspage.css"
-const EventResults = () => {
-  const [eventResult, setEventResult] = useState([]);
+import ErrorImage from "../styles/assets/errorImg.png";
+import "../styles/eventspage.css";
+import { useLocation } from "react-router-dom";
 
+const EventResults = ({history}) => {
+
+  const location = useLocation();
+
+  const handleReturn = (e) => {
+    history.push("/")
+  }
 
   return (
-    <div className="BxCard">
-      <div className="imgBx">
-        <img src={Image} className="BxImg"alt="Avatar" />
+    <>
+      <div className="events__container">
+        <div className="events__sub_container">
+          <img
+            src={location.state.event.source}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = ErrorImage;
+            }}
+            className="events__image"
+            alt="Avatar"
+          />
+          <div className="events__content">
+            <h3>Now showing: {location.state.event.title}</h3>
+            <p className="events__subcontent">Explore Now</p>
+            <button className="events__button" onClick={handleReturn}>
+              {" "}
+              Go Back{" "}
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="contentBx">
-        <h3>
-examples
-        </h3>
-        <p className="price">Architect Engineer</p>
-        <p className="buy">Explore Now</p>
-      </div>
-    </div>
+    </>
   );
 };
 

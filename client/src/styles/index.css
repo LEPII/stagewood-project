@@ -37,3 +37,7 @@ ol,
 dl {
   margin: 20px 0;
 }
+
+#root {
+  height: 100%;
+}

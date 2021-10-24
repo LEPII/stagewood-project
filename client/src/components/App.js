@@ -10,7 +10,7 @@ const App = () => {
     <Router history={History}>
       <Switch>
         <Route exact path="/" component={WelcomePage} />
-        <Route exact path="/search/id" component={EventResults} />
+        <Route exact path="/search/:id" component={EventResults} />
       </Switch>
     </Router>
   );
