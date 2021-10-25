@@ -45,7 +45,7 @@ FrontEnd
 - [ ] `graphql-tag` run command `$ npm install graphql-tag`
 - [ ] `react-apollo` run command `$ npm install react-apollo`
 - [ ] `semantic-ui-react` run command `$ npm install semantic-ui-react`
-- [ ] `Aos` run command `$ npm install Aos`
+
 
 ### Step 4: API Keys (.env) :key:
 
@@ -64,3 +64,12 @@ FrontEnd
 
 ## :parachute: Runs on Heroku
 :desktop_computer: https://stagewood-events.herokuapp.com/
+
+
+<br> </br> 
+
+![](/client/src/styles/assets/Stagewood%20Screenshot.png)
+
+<br> </br> 
+
+![](/client/src/styles/assets/Stagewood%20Screenshot%202.png)

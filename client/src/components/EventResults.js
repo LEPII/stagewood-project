@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import ErrorImage from "../styles/assets/errorImg.png";
 import "../styles/eventspage.css";
@@ -6,7 +6,7 @@ import "../styles/eventspage.css";
 const EventResults = ({history}) => {
 
   const location = useLocation();
-  const handleReturn = (e) => {
+  const handleReturn = () => {
     history.push("/")
   }
 

@@ -14,17 +14,19 @@ const GETEVENT = gql`
   }
 `;
 
-const WelcomePage = ({ history }) => {
+const WelcomePage = () => {
   
   const [currentEvent, setCurrentEvent] = useState([]);
   const [userInputValue, setUserInputValue] = useState(" ");
   const [filter, setFilter] = useState([]);
+
 
   const { loading, error } = useQuery(GETEVENT, {
     onCompleted({ getEvents }) {
       setCurrentEvent(getEvents);
     },
   });
+
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -44,7 +46,6 @@ const WelcomePage = ({ history }) => {
       setCurrentEvent(newArray);
     }
   };
-
 
 
   function handleSorting (sort) {
@@ -106,7 +107,8 @@ const WelcomePage = ({ history }) => {
     }
   }
 
-  // setting the userInput State into the currentEvent State. 
+  
+  // setting the userInput State into the currentEvent State.
   // const filteredEvent = currentEvent?.filter((event) => {
   //    return event.title.toLowerCase().includes(userInputValue);
   //  });

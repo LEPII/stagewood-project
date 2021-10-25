@@ -1,16 +1,15 @@
-import { useEffect } from "react";
-import { Card, Image } from "semantic-ui-react";
-import "../styles/welcome.css";
-import ErrorImage from "../styles/assets/errorImg.png";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import Aos from "aos";
+import { Card, Image } from "semantic-ui-react";
+import ErrorImage from "../styles/assets/errorImg.png";
+import "../styles/welcome.css";
+
 
 const EventsPage = ({ event, id }) => {
   const history = useHistory();
 
-
-
   const handleClick = () => {
+    
     history.push({
       pathname: `/search/${id}`,
       search: `?query=${id}`,
